@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 5 elements to &apos;Douzone_FinalProject&apos;&#x0D;&#x0A;- Original project: &apos;myboot04&apos;&#x0D;&#x0A;- Destination element: &apos;Douzone_FinalProject&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     gradlew.bat&#x0D;&#x0A;     build.gradle&#x0D;&#x0A;     gradlew&#x0D;&#x0A;     HELP.md&#x0D;&#x0A;     settings.gradle" description="Copy files" element1="gradlew.bat" element2="build.gradle" element3="gradlew" element4="HELP.md" element5="settings.gradle" files="5" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1677039196593" target="/Douzone_FinalProject" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,14 @@
+package com.douzone;
+
+import org.junit.jupiter.api.Test;
+
+public class test {
+	@Test
+	public void test() throws Exception {
+	   Aes128 aes128 = new Aes128("1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678");
+	   String enc = aes128.encrypt("this is plain text");
+	   String dec = aes128.decrypt(enc);
+	   System.out.println(enc);
+	   System.out.println(dec);
+	}
+}

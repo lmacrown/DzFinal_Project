@@ -1,0 +1,35 @@
+
+server.port=8080
+server.servlet.session.timeout=360000
+
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+spring.devtools.livereload.enabled=true
+spring.devtools.restart.enabled=false
+
+
+spring.datasource.url=jdbc:postgresql://localhost:3001//public
+spring.datasource.username=postgres
+spring.datasource.password=passwd
+spring.datasource.driverClassName=org.postgresql.Driver
+#
+#tomcat.ajp.port=9091
+#
+#mybatis.config-location=classpath:mybatis-config.xml
+mybatis.mapper-locations=classpath:mapper/*.xml
+#
+#
+##매퍼 파일에서 alias를 쓰기위한 패키지 지정
+#mybatis.type-aliases-package=com.myboot04.member.vo
+#
+#
+## Enable multipart uploads
+#spring.servlet.multipart.enabled=true
+## Threshold after which files are written to disk.
+#spring.servlet.multipart.file-size-threshold=4KB
+## Max file size.
+#spring.servlet.multipart.max-file-size=256MB
+## Max Request Size
+#spring.servlet.multipart.max-request-size=256MB
+#spring.servlet.multipart.location=c:/temp/upload

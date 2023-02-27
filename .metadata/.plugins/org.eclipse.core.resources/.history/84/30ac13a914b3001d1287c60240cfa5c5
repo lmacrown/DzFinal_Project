@@ -1,0 +1,7 @@
+package com.douzone.mapper;
+
+import com.douzone.entity.DouzoneVO;
+
+public interface DouzoneDAO {
+	DouzoneVO selectView(String MEMBER_ID, String MEMBER_PW);
+}

@@ -1,0 +1,13 @@
+
+public class ComplexNumber2 {
+
+	
+	public static ComplexNumber2 of(double givenReal) {
+		return new ComplexNumber2();
+	}
+	public Double getReal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
