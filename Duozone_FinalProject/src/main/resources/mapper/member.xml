@@ -7,8 +7,8 @@
 	<select id="login"
 		resultType="com.douzone.entity.DouzoneVO">
 		select *
-		from newtable
-		where id = #{param1} and passwd = #{param2}
+		from worker
+		where worker_id=#{param1} and worker_pw=#{param2}
 	</select>
 <!-- 	<select id="selectId" resultType="String">
 		select
@@ -16,7 +16,7 @@
 		from t_shopping_member
 		where EMAIL = #{param1}
 	</select>
-	<select id="findPwd" resultType="int">
+	<select id="findPwd" resultType="int">https://desktop.postman.com/?desktopVersion=10.10.3&userId=15018550&teamId=0
 		select
 		count(*)
 		from t_shopping_member

@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DouzoneVO {
-	private String member_id;
-	private String member_pw;
-	private String member_name;
+	private String worker_id;
+	private String worker_passwd;
+	private String corp_code;
+	private String worker_name;
 }

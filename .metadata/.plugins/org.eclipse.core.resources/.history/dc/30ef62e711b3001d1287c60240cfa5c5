@@ -1,9 +1,0 @@
-package com.douzone.mapper;
-
-import java.util.List;
-
-public interface DouzoneDAOInterface {
-	
-	public int articleInsert(BoardDTO dto);
-
-}

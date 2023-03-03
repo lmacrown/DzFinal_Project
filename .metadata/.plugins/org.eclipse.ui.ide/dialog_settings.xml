@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\KOSA\Desktop\start"/>
 			<item value="C:\Users\KOSA\Desktop\리액트 프로젝트\todo-app (2)"/>
 			<item value="C:\algorism"/>
 			<item value="C:\myboot04 (26)"/>
@@ -36,6 +37,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\KOSA\Desktop\start\server"/>
 			<item value="C:\Users\KOSA\Desktop\jpashop\jpashop"/>
 			<item value="C:\Users\KOSA\git\git-test"/>
 		</list>
