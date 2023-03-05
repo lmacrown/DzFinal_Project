@@ -7,7 +7,7 @@
 	<select id="select" parameterType="java.util.Map"
 		resultType="com.douzone.entity.IncomingVO">
 		select * from earner
-		where to_date(belonging_ym,'YYYYmm') between
+		where belonging_ym between
 		to_date(#{param1},'YYYYmm') and to_date(#{param2},'YYYYmm')
 		order by #{param3};
 	</select>

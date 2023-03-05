@@ -1,6 +1,5 @@
 package com.douzone.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -8,12 +7,11 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.douzone.entity.DouzoneVO;
 import com.douzone.entity.IncomingVO;
@@ -23,7 +21,7 @@ import com.douzone.service.IncomingService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller
+@RestController
 public class DouzoneController {
 
 	@Autowired
@@ -32,13 +30,10 @@ public class DouzoneController {
 	@Autowired
 	IncomingService incomingService;
 	
-	
-	
-	@RequestMapping(value="/hello.do", method = RequestMethod.GET)
-	@ResponseBody
+	@PostMapping(value="/hello.do")
 	public Map<String, Object> hello(Locale locale, Model model,
 			@RequestBody HashMap<String, String> map, HttpSession session) {
-		Map<String, Object> result = new HashMap();
+		Map<String, Object> result = new HashMap<>();
 
 		DouzoneVO member = douzoneService.login(map.get("MEMBER_ID"), map.get("MEMBER_PW"));
 		if(member != null) {
@@ -52,11 +47,10 @@ public class DouzoneController {
 		return result;
 	}
 	
-	@RequestMapping(value="/checkinfo.do", method=RequestMethod.GET)
-	@ResponseBody
+	@GetMapping(value="/checkinfo.do")
 	public Map<String, Object> checkInfo(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
-		Map<String, Object> result = new HashMap();
+		Map<String, Object> result = new HashMap<>();
 		//데이터 6개를 보내야 함
 		IncomingVO incoming = incomingService.select(map);
 		result.put("earnerInfo", incoming);
@@ -64,20 +58,23 @@ public class DouzoneController {
 		return result;
 	}
 	
-	@RequestMapping(value="/regist.do", method=RequestMethod.GET)
-	@ResponseBody
-	public void insertinfo(Locale locale, Model model,
+	@GetMapping(value="/regist.do")
+	public Map<String, Object> insertinfo(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
-		Map<String, Object> result = new HashMap();
-		//데이터 4개를 보내야 함
-		incomingService.regist(map);
+		Map<String, Object> result = new HashMap<>();
+		try {
+			incomingService.regist(map);
+			result.put("status", true);
+		}catch(Exception e) {
+			result.put("status", false);
+		}
+		return result;
 	}
 	
-	@RequestMapping(value="/searchearner.do", method=RequestMethod.POST)
-	@ResponseBody
+	@PostMapping(value="/searchearner.do")
 	public Map<String, Object> searchearner(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
-		Map<String, Object> result = new HashMap();
+		Map<String, Object> result = new HashMap<>();
 		HashMap<String, Object> test_map = new HashMap<String, Object>();
 		test_map.put("map",map);
 		
@@ -85,11 +82,10 @@ public class DouzoneController {
 		return result;
 	}
 	
-	@RequestMapping(value="/test1.do", method=RequestMethod.GET)
-	@ResponseBody
+	@GetMapping(value="/test1.do")
 	public Map<String, Object> test1(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
-		Map<String, Object> result = new HashMap();
+		Map<String, Object> result = new HashMap<>();
 		
 		result.put("test1",incomingService.test1(map));
 		return result;
