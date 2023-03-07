@@ -29,8 +29,8 @@ public class DouzoneController {
 	
 	@Autowired
 	IncomingService incomingService;
-	
-	@PostMapping(value="/hello.do")
+	//로그인
+	@PostMapping(value="/login")
 	public Map<String, Object> hello(Locale locale, Model model,
 			@RequestBody HashMap<String, String> map, HttpSession session) {
 		Map<String, Object> result = new HashMap<>();
@@ -46,19 +46,22 @@ public class DouzoneController {
 		
 		return result;
 	}
-	
-	@GetMapping(value="/checkinfo.do")
+	//소득자료조회
+	@GetMapping(value="/earner_list")
 	public Map<String, Object> checkInfo(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
 		Map<String, Object> result = new HashMap<>();
-		//데이터 6개를 보내야 함
+		//데이터 5개를 보내야 함
+		DouzoneVO douzoneVo=(DouzoneVO) session.getAttribute("member");
+		map.put("worker_id", douzoneVo.getWorker_id());
 		IncomingVO incoming = incomingService.select(map);
+		
 		result.put("earnerInfo", incoming);
 		
 		return result;
 	}
-	
-	@GetMapping(value="/regist.do")
+	//소득자료등록
+	@GetMapping(value="/regist")
 	public Map<String, Object> insertinfo(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
 		Map<String, Object> result = new HashMap<>();
@@ -70,8 +73,8 @@ public class DouzoneController {
 		}
 		return result;
 	}
-	
-	@PostMapping(value="/searchearner.do")
+	//소득자료조회
+	@PostMapping(value="/searchearner")
 	public Map<String, Object> searchearner(Locale locale, Model model,
 			@RequestBody HashMap<String, Object> map, HttpSession session) {
 		Map<String, Object> result = new HashMap<>();

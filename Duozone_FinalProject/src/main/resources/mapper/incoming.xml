@@ -6,10 +6,14 @@
 <mapper namespace="com.douzone.DAO.IncomingDAO">
 	<select id="select" parameterType="java.util.Map"
 		resultType="com.douzone.entity.IncomingVO">
-		select * from earner
-		where belonging_ym between
-		to_date(#{param1},'YYYYmm') and to_date(#{param2},'YYYYmm')
-		order by #{param3};
+		select * from earner e left join earner_tax t 
+		on e.worker_id=t.worker_id
+		where e.worker_id=#{worker_id} and
+		${param1} between
+		to_date(#{param2} ,'YYYYmm') 
+		and to_date(#{param3} ,'YYYYmm')
+		and e.earner_code like concat('%',#{param4},'%')
+		order by #{param5};
 	</select>
 	<insert id="regist" parameterType="java.util.Map">
 		<selectKey keyProperty="earnerseq" resultType="String"
@@ -24,7 +28,7 @@
 		st_loan_price, etc, )
 		values(#{earnerseq}, #{param1},#{param2},#{param3})
 	</insert>
-	<select id="searchearner" parameterType="java.util.List"
+	<select id="searchearner" parameterType="java.util.Map"
 		resultType="java.util.Map">
 		select *
 		from earner where earner_no in (
