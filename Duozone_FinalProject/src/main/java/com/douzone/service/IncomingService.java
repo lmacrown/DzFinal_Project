@@ -16,8 +16,13 @@ public class IncomingService {
 	@Autowired
 	IncomingDAO incomingDAO;
 	
-	public IncomingVO select(HashMap<String, Object> map) {
-		IncomingVO incomingVO = incomingDAO.select(map);
+	public IncomingVO earner_list(HashMap<String, Object> map) {
+		IncomingVO incomingVO = incomingDAO.earner_list(map);
+		return incomingVO;
+	}
+	
+	public IncomingVO income_category(HashMap<String, Object> map) {
+		IncomingVO incomingVO = incomingDAO.income_category(map);
 		return incomingVO;
 	}
 
@@ -32,6 +37,10 @@ public class IncomingService {
 	public Map<String, Object> searchearner(HashMap<String, Object> map) {
 		System.out.println(map);
 		return incomingDAO.searchearner(map);
+	}
+
+	public void visible_update(HashMap<String, Object> map) {
+		incomingDAO.visible_update(map);
 	}
 
 

@@ -4,7 +4,30 @@
            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.douzone.DAO.IncomingDAO">
-	<select id="select" parameterType="java.util.Map"
+	<select id="earner_list" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select 
+			count(*) as count, t.tax_id, t.accrual_ym, t.payment_ym, t.payment_date, t.total_payment, 
+			t.tax_rate, t.repay_amount, t.tax_income, t.tax_local, t.artist_cost, t.ins_cost, t.real_payment,
+			e.div_code, e.earner_name, e.personal_no, e.is_native, t.total_payment, t.tax_rate, t.tax_income,
+			t.tax_local, t.artist_cost, t.ins_cost 
+		from 
+			earner e left join earner_tax t 
+			on e.worker_id=t.worker_id 
+		where 
+			e.worker_id=#{worker_id} 
+			and ${param1} between to_date(#{param2} ,'YYYYmm') and to_date(#{param3} ,'YYYYmm')
+			and e.${param4} like concat('%',#{param5},'%') 
+		order by 
+			#{param6};
+	</select>
+	<update id="visible_update">
+		update regist_buffer set is_visible='N' where worker_id=#{worker_id} and earner_code=
+		<foreach collection="map" index="index" item="earner_code" separator="or">
+			${earner_code}
+		</foreach>
+	</update>
+<!-- 	<select id="income_category" parameterType="java.util.Map"
 		resultType="com.douzone.entity.IncomingVO">
 		select * from earner e left join earner_tax t 
 		on e.worker_id=t.worker_id
@@ -12,9 +35,9 @@
 		${param1} between
 		to_date(#{param2} ,'YYYYmm') 
 		and to_date(#{param3} ,'YYYYmm')
-		and e.earner_code like concat('%',#{param4},'%')
+		and e.div_code like concat('%',#{param4},'%')
 		order by #{param5};
-	</select>
+	</select> -->
 	<insert id="regist" parameterType="java.util.Map">
 		<selectKey keyProperty="earnerseq" resultType="String"
 			order="BEFORE">

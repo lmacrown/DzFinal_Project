@@ -10,11 +10,15 @@ import com.douzone.entity.IncomingVO;
 
 @Mapper
 public interface IncomingDAO {
-	IncomingVO select(HashMap<String, Object> map);
+	IncomingVO earner_list(HashMap<String, Object> map);
+	
+	IncomingVO income_category(HashMap<String, Object> map);
 
 	void regist(HashMap<String, Object> map);
 
 	Map<String, Object> test1(HashMap<String, Object> map);
 
 	Map<String, Object> searchearner(HashMap<String, Object> map);
+
+	void visible_update(HashMap<String, Object> map);
 }
