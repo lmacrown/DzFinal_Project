@@ -35,8 +35,11 @@
 		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
-		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="false"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\KOSA\eclipse-workspace\DZ_final\DZFinal_Back"/>
+			<item value="C:\Users\KOSA\eclipse-workspace\Douzone_FinalProject_git"/>
+			<item value="C:\Users\KOSA\eclipse-workspace\Douzone_FinalProject_git\DZFinal_Back"/>
 			<item value="C:\Users\KOSA\Desktop\tdd예제\sampleTest3"/>
 			<item value="C:\Users\KOSA\Desktop\start\server"/>
 			<item value="C:\Users\KOSA\Desktop\jpashop\jpashop"/>

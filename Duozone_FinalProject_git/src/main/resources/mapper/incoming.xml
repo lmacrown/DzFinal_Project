@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.douzone.DAO.IncomingDAO">
+	<select id="select" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select * from earner e left join earner_tax t 
+		on e.worker_id=t.worker_id
+		where e.worker_id=#{worker_id} and
+		${param1} between
+		to_date(#{param2} ,'YYYYmm') 
+		and to_date(#{param3} ,'YYYYmm')
+		and e.earner_code like concat('%',#{param4},'%')
+		order by #{param5};
+	</select>
+	<insert id="regist" parameterType="java.util.Map">
+		<selectKey keyProperty="earnerseq" resultType="String"
+			order="BEFORE">
+			SELECT earner_no_seq.NEXTVAL AS earnerseq FROM DUAL
+		</selectKey>
+		insert into earner(earner_no, worker_id, corp_code, earn_div_code,
+		earn_code,
+		resi_div, nation_div, earner_name, ssn1, ssn2, address,
+		address_detail, cable_phone1,
+		cell_phone1, email_1, st_loan_yn,
+		st_loan_price, etc, )
+		values(#{earnerseq}, #{param1},#{param2},#{param3})
+	</insert>
+	<select id="searchearner" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select *
+		from earner where earner_no in (
+		<foreach collection="map" index="index" item="earner_no" separator=",">
+			CAST(#{earner_no} AS INTEGER)
+		</foreach>
+		)
+		ORDER BY earner_no
+	</select>
+
+	<select id="test1" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select e.earner_no, e.worker_id, test1, test2
+		from earner e
+		inner join test t on e.earner_no = t.earner_no
+	</select>
+
+</mapper>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" value="0"/>
+	<item key="GitSelectRepositoryPage.lastRepository" value="C:\Users\KOSA\eclipse-workspace\Douzone_FinalProject_git\DZFinal_Back\.git"/>
 	<list key="EGit.KnownHosts">
-		<item value="git.eclipse.org"/>
 		<item value="bitbucket.org"/>
+		<item value="git.eclipse.org"/>
 		<item value="github.com"/>
 	</list>
 	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/Cakeland777/DZFinal_Back.git"/>
 		<item value="https://github.com/lmacrown/DzFinal_Project.git"/>
 		<item value="https://github.com/lmacrown/git-test.git"/>
 		<item value="file://C:\Users\KOSA\Desktop\DZfinal_Main\DzFinal_Project\DZFinal_Back"/>
@@ -26,6 +29,9 @@
 	</section>
 	<section name="GitCommitMessageComponent">
 		<list key="C:\Users\KOSA\eclipse-workspace\git-test\.git">
+			<item value="empty"/>
+		</list>
+		<list key="C:\Users\KOSA\eclipse-workspace\.git">
 			<item value="empty"/>
 		</list>
 	</section>
@@ -60,5 +66,7 @@
 			<item value="600"/>
 			<item value="400"/>
 		</list>
+	</section>
+	<section name="GitImportWizard">
 	</section>
 </section>

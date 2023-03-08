@@ -5,6 +5,9 @@
 		<item key="use_default_location" value="true"/>
 	</section>
 	<section name="org.eclipse.buildship.ui.wizard.project.import">
-		<item key="project_location" value="C:\Users\KOSA\Desktop\tdd예제\sampleTest3"/>
+		<item key="project_location" value="C:\Users\KOSA\Desktop\DZfinal_Main\DzFinal_Project\DZFinal_Back"/>
+		<item key="apply_working_sets" value="false"/>
+		<list key="working_sets">
+		</list>
 	</section>
 </section>

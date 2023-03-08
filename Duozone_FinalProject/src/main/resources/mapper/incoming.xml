@@ -4,6 +4,110 @@
            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.douzone.DAO.IncomingDAO">
+<!--  사업소득자등록-->
+	<select id="초기화면" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select 
+			코드, 소득자명, 주민번호, 소득구분코드, 소득구분명
+		from
+			earner<!--  e  left join codes c on e.div_code=c.div_code -->
+	</select>
+	<select id="코드 클릭" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select 
+			소득자정보
+		from
+			earner	
+		where
+			earner_code = #{param1} and worker_id #{worker_id}
+	</select>
+	<select id="소득자등록" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		insert into 
+			earner(코드, 소득자명, 주민번호(null), 소득구분) 
+		values
+			(#{param1},#{param2},#{param3},#{param4})
+	</select>
+	<select id="소득자정보등록" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		update 
+			earner
+		set 
+			거주구분=#{param1},
+			내/외국인=#{param1},
+			소득구분=#{param1},
+			주민번호=#{param1},
+			집코드=#{param1},
+			기본주소=#{param1},
+			상세주소=#{param1},
+			저나번호1=#{param1},
+			저나번호1=#{param1},
+			저나번호1=#{param1},
+			저나번호1=#{param1},
+			저나번호1=#{param1},
+			저나번호1=#{param1},
+			이메일1=#{param1},
+			이메일2=#{param1},
+			학자금여부=#{param1},
+			학자금액=#{param1},
+			비고=#{param1},
+			소득자명=#{param1},
+			소득구분=#{param1},
+			예술인여부=#{param1},
+			예술인유형=#{param1},
+		where
+			earner_code=#{param1} and worker_id=#{worker_id}
+	</select>
+<!-- 소득자료입력 -->
+	<select id="지급년월조회" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select
+			소득자명, 주민번호, 소득구분
+		from 
+			earner
+		where
+			accural_ym = #{param1} and worker_id=#{worker_id}
+	</select>
+	<select id="소득자클릭" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select
+			세금_아이디,귀속년월, 지급일, 지급총액, 세율
+		from 
+			earner e left join earner_tax t on e.earner_code=t.earner_code
+		where
+			payment_ym = #{param1} and worker_id=#{worker_id}
+	</select>
+	<select id="소득자코드도움" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		select
+			코드, 소득자명, 내/외, 주민번호, 소득구분명, 구분코드
+		from 
+			earner
+		where
+			worker_id=#{worker_id}
+	</select>
+	<select id="세금정보입력" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		insert into
+			earner_tax (세금아이디(auto increase?), 소득자 코드, 세율, 지급총액, 소득세, 지방소득세, 세액계, 차인지급액, 지급년월, 지급일, 귀속년월, 예술인경비, 고용보험료)
+		values
+			#{param}
+		<!-- <selectKey keyProperty="earnerseq" resultType="String"
+			order="BEFORE">
+			SELECT earner_no_seq.NEXTVAL AS earnerseq FROM DUAL
+		</selectKey> == auto increase -->
+	</select>
+	<select id="세금정보수정" parameterType="java.util.Map"
+		resultType="com.douzone.entity.IncomingVO">
+		update earner_tax set
+			소득자 코드, 세율, 지급총액, 소득세, 지방소득세, 세액계, 
+			차인지급액, 지급년월, 지급일, 귀속년월, 예술인경비, 고용보험료
+		=
+			#{param}
+		where
+			tax_id=#{tax_id}
+	</select>
+<!-- 사업소득조회 -->
 	<select id="earner_list" parameterType="java.util.Map"
 		resultType="com.douzone.entity.IncomingVO">
 		select 
@@ -21,24 +125,8 @@
 		order by 
 			#{param6};
 	</select>
-	<update id="visible_update">
-		update regist_buffer set is_visible='N' where worker_id=#{worker_id} and earner_code=
-		<foreach collection="map" index="index" item="earner_code" separator="or">
-			${earner_code}
-		</foreach>
-	</update>
-<!-- 	<select id="income_category" parameterType="java.util.Map"
-		resultType="com.douzone.entity.IncomingVO">
-		select * from earner e left join earner_tax t 
-		on e.worker_id=t.worker_id
-		where e.worker_id=#{worker_id} and
-		${param1} between
-		to_date(#{param2} ,'YYYYmm') 
-		and to_date(#{param3} ,'YYYYmm')
-		and e.div_code like concat('%',#{param4},'%')
-		order by #{param5};
-	</select> -->
-	<insert id="regist" parameterType="java.util.Map">
+
+<!-- 	<insert id="regist" parameterType="java.util.Map">
 		<selectKey keyProperty="earnerseq" resultType="String"
 			order="BEFORE">
 			SELECT earner_no_seq.NEXTVAL AS earnerseq FROM DUAL
@@ -50,8 +138,8 @@
 		cell_phone1, email_1, st_loan_yn,
 		st_loan_price, etc, )
 		values(#{earnerseq}, #{param1},#{param2},#{param3})
-	</insert>
-	<select id="searchearner" parameterType="java.util.Map"
+	</insert> -->
+<!-- 	<select id="searchearner" parameterType="java.util.Map"
 		resultType="java.util.Map">
 		select *
 		from earner where earner_no in (
@@ -60,7 +148,7 @@
 		</foreach>
 		)
 		ORDER BY earner_no
-	</select>
+	</select> -->
 
 	<select id="test1" parameterType="java.util.Map"
 		resultType="java.util.Map">
